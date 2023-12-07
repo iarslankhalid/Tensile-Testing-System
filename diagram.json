@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "author": "Arslan Raja",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 173.4, "left": -550.8, "attrs": {} },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -258.22,
+      "left": -460.11,
+      "attrs": {}
+    },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": 177.99, "left": 10.27, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": -329.28,
+      "left": -86.33,
+      "attrs": { "size": "17" }
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper2",
+      "top": -327.63,
+      "left": 125.05,
+      "attrs": { "size": "17" }
+    },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell1",
+      "top": -35.8,
+      "left": 300.2,
+      "attrs": { "type": "5kg" }
+    },
+    { "type": "wokwi-a4988", "id": "drv1", "top": -93.36, "left": -96.3, "attrs": {} },
+    { "type": "wokwi-a4988", "id": "drv2", "top": -90.76, "left": 80.03, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -134.36, "left": 143, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 32.85, "left": -76.52, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 111.55,
+      "left": 15.07,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 391.17,
+      "left": -394.36,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "keypad1:C4", "mega:0", "green", [ "v0" ] ],
+    [ "keypad1:C3", "mega:1", "green", [ "v0" ] ],
+    [ "mega:2", "keypad1:C2", "green", [ "v0" ] ],
+    [ "keypad1:C1", "mega:3", "green", [ "v0" ] ],
+    [ "keypad1:R4", "mega:4", "green", [ "v0" ] ],
+    [ "keypad1:R3", "mega:5", "green", [ "v0" ] ],
+    [ "keypad1:R2", "mega:6", "green", [ "v0" ] ],
+    [ "keypad1:R1", "mega:7", "green", [ "v0" ] ],
+    [ "stepper1:A-", "drv1:2B", "green", [ "v0" ] ],
+    [ "stepper1:A+", "drv1:2A", "green", [ "v0" ] ],
+    [ "stepper1:B+", "drv1:1A", "green", [ "v0" ] ],
+    [ "stepper1:B-", "drv1:1B", "green", [ "v0" ] ],
+    [ "stepper2:A-", "drv2:2B", "green", [ "v0" ] ],
+    [ "stepper2:A+", "drv2:2A", "green", [ "v0" ] ],
+    [ "stepper2:B+", "drv2:1A", "green", [ "v0" ] ],
+    [ "stepper2:B-", "drv2:1B", "green", [ "v0" ] ],
+    [ "drv1:ENABLE", "drv2:ENABLE", "#8f4814", [ "h-21.23", "v-26.49", "h160" ] ],
+    [ "drv1:MS1", "drv2:MS1", "orange", [ "h-15.02", "v-27.12", "h178.62", "v31.04" ] ],
+    [ "drv1:MS2", "drv2:MS2", "green", [ "h-29.51", "v-57.41", "h184.14", "v57.93" ] ],
+    [ "drv1:MS3", "drv2:MS3", "blue", [ "h-35.02", "v-75.98", "h182.07", "v73.1" ] ],
+    [ "drv1:DIR", "drv2:DIR", "cyan", [ "h-12.95", "v15.97", "h187.59" ] ],
+    [ "drv1:STEP", "drv2:STEP", "limegreen", [ "h-19.85", "v32.46", "h184.83", "v-26.9" ] ],
+    [ "drv2:GND.1", "drv2:GND.2", "black", [ "v3.1", "h42.87", "v-71.04" ] ],
+    [ "drv1:GND.1", "drv1:GND.2", "black", [ "v0.18", "h71.61", "v-53.1" ] ],
+    [ "drv1:GND.1", "mega:GND.5", "black", [ "v253.38", "h-24.51", "v24.74" ] ],
+    [ "drv2:GND.1", "drv1:GND.1", "black", [ "v47.91", "h-175.86" ] ],
+    [
+      "drv1:DIR",
+      "mega:8",
+      "cyan",
+      [ "h-13.17", "v99.91", "h0", "v76.48", "h-141.13", "v-0.34", "h-133.34" ]
+    ],
+    [
+      "drv1:STEP",
+      "mega:9",
+      "limegreen",
+      [ "h-19.93", "v86.49", "h-0.34", "v92.31", "h-205.48" ]
+    ],
+    [
+      "drv1:MS3",
+      "mega:10",
+      "blue",
+      [ "h-34.63", "v72.89", "h0.34", "v126.5", "h-265.32", "v11.28" ]
+    ],
+    [ "drv1:MS2", "mega:11", "green", [ "h-43.18", "v88.65", "h-0.34", "v111.8", "h-95.39" ] ],
+    [
+      "drv1:MS1",
+      "mega:12",
+      "orange",
+      [ "h-53.09", "v62.01", "h-1.43", "v137.36", "h-184.42", "v0", "h-74.39" ]
+    ],
+    [ "drv1:ENABLE", "mega:13", "#8f4814", [ "h-66.67", "v197.22", "h-110.18" ] ],
+    [ "drv1:VDD", "drv2:VDD", "red", [ "h16", "v70.19", "h171.33", "v-65.51" ] ],
+    [ "drv1:VDD", "mega:5V.2", "red", [ "h16", "v167.61", "h-0.56", "v109.74" ] ],
+    [ "drv1:VMOT", "drv2:VMOT", "gray", [ "h0.32", "v-53.62", "h124.3" ] ],
+    [ "drv2:VMOT", "vcc1:VCC", "green", [ "h0" ] ],
+    [ "drv1:GND.1", "gnd1:GND", "black", [ "v0" ] ],
+    [ "drv2:VDD", "cell1:VCC", "red", [ "h92.57", "v43.04", "h-5.9" ] ],
+    [ "drv2:GND.1", "cell1:GND", "black", [ "v2.9", "h116.71" ] ],
+    [ "mega:GND.5", "lcd1:VSS", "black", [ "v-0.51", "h220.1" ] ],
+    [ "mega:5V.2", "lcd1:VDD", "red", [ "v-0.59", "h179.11", "v141.86", "h54.66" ] ],
+    [ "lcd1:RS", "mega:53", "orange", [ "v0" ] ],
+    [ "lcd1:RW", "mega:GND.5", "black", [ "v0" ] ],
+    [ "lcd1:E", "mega:52", "white", [ "v44.72", "h-249.73" ] ],
+    [ "mega:23", "lcd1:D1", "orange", [ "v0.32", "h98.42", "v176.35", "h189.36" ] ],
+    [ "mega:24", "lcd1:D2", "blue", [ "v-2.93", "h100.61", "v177", "h202.38" ] ],
+    [ "mega:25", "lcd1:D3", "violet", [ "v3.58", "h82.15", "v179.6", "h222.55" ] ],
+    [ "lcd1:VDD", "lcd1:A", "red", [ "v120.2", "h47.11" ] ],
+    [ "lcd1:RW", "lcd1:K", "black", [ "v129.31", "h45.44" ] ],
+    [ "mega:33", "cell1:DT", "purple", [ "v-0.11", "h164.73", "v-187.57", "h191.11", "v-54.1" ] ],
+    [
+      "mega:34",
+      "cell1:SCK",
+      "white",
+      [ "v-3.03", "h182.82", "v-185.04", "h95.55", "v0.51", "h97.58", "v-52.58" ]
+    ],
+    [ "lcd1:VDD", "lcd1:V0", "green", [ "v0" ] ],
+    [ "mega:5V.2", "btn1:2.r", "red", [ "v-1.31", "h277.33", "v-35.67" ] ],
+    [
+      "mega:26",
+      "lcd1:D4",
+      "purple",
+      [ "v0.87", "h-16.96", "v135.43", "h0", "v48.31", "h342.92" ]
+    ],
+    [ "mega:27", "lcd1:D5", "magenta", [ "v0.87", "h73.62", "v191.66", "h250.26" ] ],
+    [ "mega:28", "lcd1:D6", "limegreen", [ "v1.66", "h-9.83", "v190.86", "h351.63" ] ],
+    [ "mega:29", "lcd1:D7", "yellow", [ "v0.08", "h55.41", "v200.37", "h289.07" ] ],
+    [ "mega:RESET", "btn2:1.l", "green", [ "v0" ] ],
+    [ "btn2:2.r", "mega:GND.3", "green", [ "h30.32", "v-47.01", "h-70.87" ] ],
+    [ "drv1:RESET", "drv2:RESET", "violet", [ "h-45.49", "v-98.31", "h185.52", "v95.14" ] ],
+    [ "drv1:SLEEP", "drv2:SLEEP", "gray", [ "h-54.47", "v-119.01", "h186.05", "v114.17" ] ],
+    [ "drv1:RESET", "mega:14", "violet", [ "h-76.14", "v145.87", "h-104.12" ] ],
+    [ "drv1:SLEEP", "mega:15", "gray", [ "h-85.66", "v97.16", "h-87.21", "v28.54" ] ],
+    [ "btn1:1.l", "mega:37", "green", [ "h-59.8", "v130.21" ] ]
+  ],
+  "dependencies": {}
+}
